@@ -44,9 +44,9 @@ input {
     border: 2px solid black;
     font-size: 1.5rem;
     font-weight: 100;
+
     padding: 10px;
 }
-
 form {
     margin: 25px auto;
     padding: 20px;
@@ -54,12 +54,10 @@ form {
     width: 500px;
     background: #f2eed6;
 }
-
 div.form-element {
     margin: 20px 0;
     text-align: center;
 }
-
 button {
     display: block;
     margin-left: auto;
@@ -100,13 +98,13 @@ header {
     text-align: right;
     list-style-type: none;
 }
-
 .nav li a{
+
+
     color: black;
     font-size: 32px;
     text-decoration: none;
 }
-
 .check img{
     wight: 450px;
     height: 450px;
