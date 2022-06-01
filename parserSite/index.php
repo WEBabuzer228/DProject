@@ -1,35 +1,26 @@
 
-<html lang="ru">
-<head>
-    <meta charset="UTF-8"
-    <title>  </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header id="header" class="header">
-    <div class="container">
-        <div class="nav">
-            <img class="logo" src="png/GoodsLogo.png" alt="GoodsCHECK">
-            <li>
-                <a href="http://goodscheck.local/register.php">
-                    Регистрация
-                </a>
-            </li>
+<?php include 'header.php';?>
+<div class="content">
+<h2>Выберите категорию товаров:</h2>
+    <div class="check">
+        <li class="tech">
 
-            <li>
-                </a>
-                <a href="http://goodscheck.local/login.php">
-                    Войти
-                </a>
-            </li>
+            <a href="tech.php" class="techlink">
+                <img src="png/Tech.png">
+            </a>
+            <p>Техника</p>
 
-        </div>
+        </li>
+        <li class="cosmetic">
+            <a href="cosmetic.php" class="cosmeticlink">
+                <img src="png/Cosmetic.png">
+            </a>
+            <p>Косметика</p>
+
+        </li>
 
     </div>
-</header>
-
+    <h1>Упростите выбор товара в пару кликов!</h1>
+</div>
 </body>
 </html>
