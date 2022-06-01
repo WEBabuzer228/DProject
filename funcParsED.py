@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 import requests
 from bs4 import BeautifulSoup
 import re
+import sys
 
 def parsEldorado(productName):
     dataEldorado = []
@@ -39,7 +41,7 @@ def parsEldorado(productName):
         price = nameDev.find("span", class_ = "zS GS").text.strip()
         price = re.sub("\xa0", " ", price)
         name = re.sub("\xa0", " ", name)
-        if not re.search("Чехол", name) and not re.search("Защит", name) and not re.search("Блок", name) and not re.search("Адаптер", name) and not re.search("Накладка", name) and not re.search("Сете", name) and not re.search("Каб", name) and not re.search("Развет", name):
+        if not re.search("Чехол", name) and not re.search("Защит", name) and not re.search("Блок", name) and not re.search("Адаптер", name) and not re.search("Накладка", name) and not re.search("Сете", name) and not re.search("Каб", name) and not re.search("Развет", name) and not re.search("ушни", name):
             dataEldorado.append(
                     [name, price]
                 )
@@ -47,5 +49,21 @@ def parsEldorado(productName):
     for i in range(len(dataEldorado)):
         print(dataEldorado[i])
     #print(dataEldorado)
-parsEldorado("msi монитор")
+    
+#parsEldorado("msi монитор")
 
+if __name__ == "__main__":
+    allMes = ""
+    nameDev = ""
+    if len (sys.argv) > 1:
+        #print ("Привет, {}!".format (sys.argv[1] ) )
+
+        for arg in sys.argv:
+            allMes = allMes + arg + " "
+
+        nameDev = re.sub("funcParsED.py", "", allMes)
+
+        print(nameDev)
+        parsEldorado("{}".format(nameDev))
+    else:
+        print ("Привет, мир!")
