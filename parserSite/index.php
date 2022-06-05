@@ -9,16 +9,13 @@
                 <img src="png/Tech.png">
             </a>
             <p>Техника</p>
-
         </li>
         <li class="cosmetic">
             <a href="cosmetic.php" class="cosmeticlink">
                 <img src="png/Cosmetic.png">
             </a>
             <p>Косметика</p>
-
         </li>
-
     </div>
     <h1>Упростите выбор товара в пару кликов!</h1>
 </div>

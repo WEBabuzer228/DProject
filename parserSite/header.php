@@ -1,18 +1,22 @@
 <html lang="ru">
 <head>
-    <meta charset="UTF-8"
+<!--    <meta charset="UTF-8">-->
     <title>  </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="png/fav.png" type="image/x-icon">
 </head>
 <body>
 
 <header id="header" class="header">
     <div class="container">
         <div class="nav">
+           <a href="index.php">
             <img class="logo" src="png/GoodsLogo.png" alt="GoodsCHECK">
+            </a>
+
             <?php
             if(isset($_COOKIE['username']) == false):
             ?>
@@ -34,8 +38,13 @@
                 <li class="nav">
                     <a  href="exit.php">Выход</a>
                 </li>
-            <?php endif;?>
+            <li class="history">
+                <a href="histoty.php">История</a>
+            </li>
 
+
+            <?php endif;?>
+            <p class="discr">Сервис для автоматизации выбора товаров</p>
         </div>
 
     </div>
