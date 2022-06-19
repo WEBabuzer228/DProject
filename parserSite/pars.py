@@ -33,21 +33,21 @@ def parsEldorado(productName):
     
     soup = BeautifulSoup(src, 'lxml')
 
-    findNameDevice = soup.find_all('li', class_="_F")
+    findNameDevice = soup.find_all('li', class_="MF")
     dataEldorado = []
     EndRes = ""
 
     for nameDev in findNameDevice:
 
-        name = nameDev.find("a", class_= "iG").text.strip()
-        price = nameDev.find("span", class_= "OS VS").text.strip()
-        link = "https://www.eldorado.ru/" + nameDev.find('a', class_='iG').get('href')
+        name = nameDev.find("a", class_= "VF").text.strip()
+        price = nameDev.find("span", class_= "yS FS").text.strip()
+        link = "https://www.eldorado.ru/" + nameDev.find('a', class_='VF').get('href')
 
         price = re.sub("\xa0", " ", price)
         name = re.sub("\xa0", " ", name)
 
 
-        if not re.search("Чехол", name) and not re.search("Защит", name) and not re.search("Блок", name) and not re.search("Адаптер", name) and not re.search("Накладка", name) and not re.search("Сете", name) and not re.search("Каб", name) and not re.search("Развет", name) and not re.search("Беспроводные", name):
+        if not re.search("Чехол", name) and not re.search("Перходник", name)  and not re.search("Ремешок", name) and not re.search("Защит", name) and not re.search("Блок", name) and not re.search("Адаптер", name) and not re.search("Накладка", name) and not re.search("Сете", name) and not re.search("Каб", name) and not re.search("Развет", name) and not re.search("Беспроводные", name):
             dataEldorado.append(
                     [name, price, link]
                 )
@@ -74,7 +74,7 @@ def parsEldorado(productName):
     with open("endResoult.txt", "w") as file:
         #file.write("Argument List:" + str(sys.argv))
         file.write(end)
-    print("yes")
+    #print("yes")
 
 
 

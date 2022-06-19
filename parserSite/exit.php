@@ -1,5 +1,6 @@
 <?php
-setcookie('username',$username, time()- 13600, "/");
+session_start();
+
+$_SESSION['user_id'] = null;
 header('location:/');
 ?>
-

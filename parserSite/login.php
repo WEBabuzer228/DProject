@@ -1,6 +1,5 @@
 <?php include 'header.php';?>
 <?php
-session_start();
 include('config.php');
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -14,8 +13,10 @@ if (isset($_POST['login'])) {
     } else {
         if (password_verify($password, $result['password'])) {
             $_SESSION['user_id'] = $result['id'];
+            $_SESSION['login'] = $username;
+            $_SESSION['access_lvl'] = $result['accesslvl'];
             echo '<p class="success">Поздравляем, вы прошли авторизацию!</p>';
-            setcookie('username', $username, time()+ 13600);
+            //setcookie('username', $username, time()+ 13600);
             header('location:/');
         } else {
             echo '<p class="error"> Неверные пароль или имя пользователя!</p>';

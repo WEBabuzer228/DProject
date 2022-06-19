@@ -6,15 +6,15 @@
         <li class="tech">
 
             <a href="tech.php" class="techlink">
-                <img src="png/Tech.png">
+                <img src="png/technic.png">
             </a>
             <p>Техника</p>
         </li>
         <li class="cosmetic">
-            <a href="cosmetic.php" class="cosmeticlink">
-                <img src="png/Cosmetic.png">
+            <a href="drugs.php" class="cosmeticlink">
+                <img src="png/drugs.png">
             </a>
-            <p>Косметика</p>
+            <p>Лекарства</p>
         </li>
     </div>
     <h1>Упростите выбор товара в пару кликов!</h1>

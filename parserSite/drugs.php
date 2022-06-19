@@ -1,12 +1,11 @@
 <?php include 'header.php';
 ?>
 
-    <h2>Введите название товара, который хотите найти в магазинах техники</h2>
-<h3>Доступные категории товаров: блоки питания, материнские платы, оперативная память, ноутбуки,<br> планшеты,процессоры, смартфоны, ssd накопители,видеокарты и жёсткие диски</h3>
+<h2>Введите название нужного товара, который хотите сравнить в аптеках</h2>
 <form class="inputform" method="GET" action="<?=$_SERVER['PHP_SELF'];?>">
     <input name="searchPlace" placeholder="Введите название товара">
     <input name="repRequest" value="N" style="display: none">
-     <button class="search" type="submit" name="searchClick">
+    <button class="search" type="submit" name="searchClick">
         <img src="png/loopa.png" width="36" height="36">
     </button>
 
@@ -27,20 +26,13 @@ function outGoods($goodsAr,$count,$store) {
                     {
                         echo $goodsAr[$i] . " ";
                     }
-                    if($store == "eldorado" /*or ...*/){
-                        echo "<img src='png/favicon.PNG' width='35' height='35' style='float: right; opacity: 75%'>";
+                    if($store == "eapteka" /*or ...*/){
+                        echo "<img src='png/eapteka.jpg' width='35' height='35' style='float: right; opacity: 75%'>";
                     }
-                    else if($store == "citilink"){
-                        echo "<img src='png/cl.png' width='35' height='35' style='float: right; opacity: 75%'>";
-                    }
-                    else if($store == "corpCenter"){
-                        echo "<img src='png/kc.png' width='35' height='35' style='float: right; opacity: 75%'>";
-                    }
-                    else if($store == "dns"){
-                        echo "<img src='png/dns.jpg' width='35' height='35' style='float: right; opacity: 75%'>";
+                    else if($store == "apteka"){
+                        echo "<img src='png/apteka.PNG' width='35' height='35' style='float: right; opacity: 75%'>";
                     }
                     ?>
-
                 </p>
             </li>
         </a>
@@ -71,18 +63,18 @@ function sendStrSearchToDB($needSearch,$hrefGoods,$connection) {
 
     $historyUserexp = outDataSQLUser('history','username',$_SESSION['login'],$connection);
 
-    print_r($hrefGoods);
-
     if (count($historyUserexp) == 10) {
         array_shift($historyUserexp);
-        $historyUserexp[] = $needSearch;
+        $historyUserexp[] = $needSearch . ";D";
+
     } else {
-        $historyUserexp[] = $needSearch;
+        $historyUserexp[] = $needSearch . ";D";
     }
     for($i = 0; $i < count($historyUserexp);$i++){
         $historyUserexp[$i] = $historyUserexp[$i] . ',';
     }
     $strToWriteDB = implode($historyUserexp);
+    //print($strToWriteDB);
 
     $query = $connection->prepare("UPDATE users SET history = '" . $strToWriteDB . "' WHERE username = '" . $_SESSION['login'] . "'");
     $result = $query->execute();
@@ -100,7 +92,7 @@ function searchFormDBandOutPut($nameTable,$needSearch){
     $arrayNeedSearch = explode(" ", $needSearch);
 
     //Example
-    //AND (CONVERT(`id` USING utf8) LIKE '%13%' OR CONVERT(`name` USING utf8) LIKE '%13%' OR CONVERT(`price` USING utf8) LIKE '%13%' OR CONVERT(`link` USING utf8) LIKE '%13%')
+    //AND (CONVERT(`name` USING utf8) LIKE '%13%') 
     // И добавлять (AND (CON...) пока не кончатся слова из поля поиска
 
     $sqlQuery = "WHERE (CONVERT(`name` USING utf8) LIKE '%$arrayNeedSearch[0]%') ";
@@ -142,38 +134,35 @@ function searchClick()
     $needSearch = $_GET['searchPlace'];
     $repRequest = $_GET['repRequest'];
 
-    $checkDNS = false;
-    $checkCL = false;
-    $checkED = false;
+    $checkEA = false;
+    $checkE = false;
 
     $connectSQL = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD);
 
     if (!empty($needSearch)){
-        $checkDNS = searchFormDBandOutPut("dns",$needSearch);
-        $checkCL = searchFormDBandOutPut("citilink",$needSearch);
-        $checkED = searchFormDBandOutPut("eldorado",$needSearch);
+        $checkEA = searchFormDBandOutPut("eapteka",$needSearch);
+        $checkE = searchFormDBandOutPut("apteka",$needSearch);
 
     }
     else if(empty($needSearch)){
         echo "<h2 style=\"text-align: center;margin-top: 20px;margin-bottom: 20px;\">
                       Пустой запрос!</h2>";
     }
-    else if(!$checkDNS and !$checkCL and !$checkED) {
+    else if(!$checkEA and !$checkE) {
         echo "<h2 style=\"text-align: center;margin-top: 20px;margin-bottom: 20px;\">
                       По вашему запросу ничего не найдено</h2>";
     }
 
-
+    
     if (isset($_SESSION['user_id']) != false and !empty($needSearch)) {
         if($repRequest == 'N') {
             sendStrSearchToDB($needSearch, "nothing", $connectSQL);
         }
-    }
+    } 
     else if (isset($_SESSION['user_id']) == false) {
         echo "<h2 style=\"text-align: center;margin-top: 20px;margin-bottom: 20px;\">
                   Если вы хотите, чтобы ваша история запросов сохранялась,вам нужно авторизоваться или зарегистрироваться на нашем сайте</h2>";
     }
-
 
 }
 

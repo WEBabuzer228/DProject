@@ -36,6 +36,7 @@ h2{
     padding-top: 50px;
     text-align: center;
     font-size: 35px;
+    padding-bottom: 50px;
 
 }
 
@@ -207,3 +208,61 @@ h3{
     color: white;
     transition: 1s ease-out;
 }
+.blockSearchHistory li{
+
+    font-size: 25px;
+    text-align: center;
+    list-style-type: none;
+    background-color: whitesmoke;
+    border: 3px solid black;
+    border-radius: 15px;
+    width: 35%;
+    /* Сверху | Справа | Снизу | Слева */
+    padding: 20px 10px 20px 10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    transition: 1s ease-out;
+}
+.blockSearchHistory li:hover{
+    background-color: black;
+    color: white;
+    transition: 1s ease-out;
+}
+.blockSearchHistory a{
+    text-decoration: none;
+    color:black;
+}
+.user{
+    font-size: 25px;
+    text-align: center;
+    list-style-type: none;
+    background-color: whitesmoke;
+    border: 3px solid black;
+    border-radius: 15px;
+    width: 45%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+
+
+}
+.blockAllUserHistory a{
+    text-decoration: none;
+    color:black;
+    margin-top: 20px;
+}
+.blockAllUserHistory p{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.blockAllUserHistory p:hover{
+
+    color:#008202;
+}
+h4{
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+

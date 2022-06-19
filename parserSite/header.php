@@ -1,4 +1,5 @@
 <html lang="ru">
+<?php session_start(); ?>
 <head>
 <!--    <meta charset="UTF-8">-->
     <title>  </title>
@@ -16,9 +17,8 @@
            <a href="index.php">
             <img class="logo" src="png/GoodsLogo.png" alt="GoodsCHECK">
             </a>
-
             <?php
-            if(isset($_COOKIE['username']) == false):
+            if(isset($_SESSION['user_id']) == false):
             ?>
 
 
